@@ -55,9 +55,9 @@ public sealed partial class ApplicationSettingEditorDialog
             }
         }
 
-        if(this.SettingThatCannotHaveChildren.Contains(this.SettingType))
+        if (this.SettingThatCannotHaveChildren.Contains(this.SettingType))
         {
-            if(this.ApplicationSetting?.Children?.Any() == true)
+            if (this.ApplicationSetting?.Children?.Any() == true)
             {
                 await this.OnExceptionThrown.InvokeAsync(
                     new ArgumentException($"{this.SettingType} application settings cannot have children"));

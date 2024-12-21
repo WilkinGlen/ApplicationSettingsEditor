@@ -13,7 +13,7 @@ public sealed partial class Home
     [Inject]
     public ISnackbar? Snackbar { get; set; }
 
-    private ApplicationSetting ApplicationSetting = new() { SettingId = Guid.NewGuid(), ParentGuid = Guid.NewGuid(), Children = new List<ApplicationSetting> { new ApplicationSetting() } };
+    private ApplicationSetting ApplicationSetting = new() { SettingId = Guid.NewGuid(), ParentGuid = Guid.NewGuid(), Children = [new ApplicationSetting()] };
     //private ApplicationSetting ApplicationSetting = new();
     private readonly SettingTypes settingType = SettingTypes.ConnectionString;
 
