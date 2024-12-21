@@ -10,10 +10,8 @@ public sealed partial class ApplicationSettingEditorDialog
         SettingTypes.ConnectionString, 
         SettingTypes.ArrayItem, 
         SettingTypes.GroupItem];
-
     private string? key;
     private string? value;
-    private Guid? parentId;
 
     [CascadingParameter]
     private MudDialogInstance? MudDialog { get; set; }
@@ -26,6 +24,10 @@ public sealed partial class ApplicationSettingEditorDialog
 
     [Parameter]
     public EventCallback<Exception> OnExceptionThrown { get; set; }
+
+    [Parameter]
+    public int DialogWidth { get; set; } = 75;
+    private string DialogCssStyle => $"width: {this.DialogWidth}%";
 
     protected override async void OnInitialized()
     {
@@ -46,8 +48,6 @@ public sealed partial class ApplicationSettingEditorDialog
                 this.MudDialog!.Cancel();
                 return;
             }
-
-            this.parentId = Guid.Parse(this.ApplicationSetting!.ParentGuid.ToString()!);
         }
     }
 

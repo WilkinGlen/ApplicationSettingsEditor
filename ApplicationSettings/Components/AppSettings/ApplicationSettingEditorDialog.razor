@@ -1,20 +1,25 @@
 ﻿@using ApplicationSettings.Models
 
-<MudDialog Class="mud-dialog">
-    <TitleContent>@this.SettingType Setting</TitleContent>
+<MudDialog Style="@this.DialogCssStyle">
+    <TitleContent>@this.SettingType.GetDescription() Setting</TitleContent>
     <DialogContent>
         <MudStack Row>
-            @if (
-                this.SettingType == SettingTypes.Individual || 
-                this.SettingType == SettingTypes.ConnectionString || 
-                this.SettingType == SettingTypes.GroupItem)
+            @if (this.SettingType == SettingTypes.Individual || 
+                 this.SettingType == SettingTypes.ConnectionString || 
+                 this.SettingType == SettingTypes.GroupItem)
             {
                 <MudTextField @bind-Value="@this.key" Label="Key" />
                 <MudTextField @bind-Value="@this.value" Label="Value" />
             }
-            else if(this.SettingType == SettingTypes.ArrayItem)
+            @if(this.SettingType == SettingTypes.ArrayItem)
             {
                 <MudTextField @bind-Value="@this.value" Label="Value" />
+            }
+            @if (this.SettingType == SettingTypes.ConnectionStringsGroup || 
+                this.SettingType == SettingTypes.Group || 
+                this.SettingType == SettingTypes.Array)
+            {
+                <MudTextField @bind-Value="@this.key" Label="Key" />
             }
         </MudStack>
     </DialogContent>
@@ -23,9 +28,3 @@
         <MudButton Variant="Variant.Outlined" Size="Size.Small" Color="Color.Primary" OnClick="@this.Save">Save</MudButton>
     </DialogActions>
 </MudDialog>
-
-<style>
-    .mud-dialog {
-        width: 75%;
-    }
-</style>
