@@ -20,8 +20,8 @@ public sealed partial class ApplicationSettingEditorDialog
     private bool keyIsValid = true;
     private bool valueIsValid = true;
 
-    private string KeyAdornmentText => this.keyIsValid ? string.Empty : "Key required";
-    private string ValueAdornmentText => this.valueIsValid ? string.Empty : "Value required";
+    private string KeyAdornmentText => this.keyIsValid ? " " : "Key required";
+    private string ValueAdornmentText => this.valueIsValid ? " " : "Value required";
 
     [CascadingParameter]
     private MudDialogInstance? MudDialog { get; set; }
