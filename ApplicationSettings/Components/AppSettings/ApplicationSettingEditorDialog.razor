@@ -1,0 +1,31 @@
+﻿@using ApplicationSettings.Models
+
+<MudDialog Class="mud-dialog">
+    <TitleContent>@this.SettingType Setting</TitleContent>
+    <DialogContent>
+        <MudStack Row>
+            @if (
+                this.SettingType == SettingTypes.Individual || 
+                this.SettingType == SettingTypes.ConnectionString || 
+                this.SettingType == SettingTypes.GroupItem)
+            {
+                <MudTextField @bind-Value="@this.key" Label="Key" />
+                <MudTextField @bind-Value="@this.value" Label="Value" />
+            }
+            else if(this.SettingType == SettingTypes.ArrayItem)
+            {
+                <MudTextField @bind-Value="@this.value" Label="Value" />
+            }
+        </MudStack>
+    </DialogContent>
+    <DialogActions>
+        <MudButton Variant="Variant.Outlined" Size="Size.Small" OnClick="@this.Cancel">Cancel</MudButton>
+        <MudButton Variant="Variant.Outlined" Size="Size.Small" Color="Color.Primary" OnClick="@this.Save">Save</MudButton>
+    </DialogActions>
+</MudDialog>
+
+<style>
+    .mud-dialog {
+        width: 75%;
+    }
+</style>

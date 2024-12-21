@@ -1,0 +1,12 @@
+﻿@page "/"
+
+<PageTitle>Home</PageTitle>
+
+<MudButton OnClick="@this.EditClickedHandler">Edit</MudButton>
+
+<MudStack Row>
+    <MudText>SettingId: @this.ApplicationSetting.SettingId</MudText>
+    <MudText>ParentGuid: @this.ApplicationSetting.ParentGuid</MudText>
+    <MudText>Key: @this.ApplicationSetting.Key</MudText>
+    <MudText>Value: @this.ApplicationSetting.Value</MudText>
+</MudStack>
