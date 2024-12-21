@@ -13,9 +13,9 @@ public sealed partial class Home
     [Inject]
     public ISnackbar? Snackbar { get; set; }
 
-    //ApplicationSetting ApplicationSetting = new() { SettingId = Guid.NewGuid(), ParentGuid = Guid.NewGuid() };
-    private ApplicationSetting ApplicationSetting = new();
-    private readonly SettingTypes settingType = SettingTypes.ConnectionStringsGroup;
+    private ApplicationSetting ApplicationSetting = new() { SettingId = Guid.NewGuid(), ParentGuid = Guid.NewGuid(), Children = new List<ApplicationSetting> { new ApplicationSetting() } };
+    //private ApplicationSetting ApplicationSetting = new();
+    private readonly SettingTypes settingType = SettingTypes.ConnectionString;
 
     protected override void OnInitialized() => this.Snackbar!.Configuration.PositionClass = Defaults.Classes.Position.BottomRight;
 
