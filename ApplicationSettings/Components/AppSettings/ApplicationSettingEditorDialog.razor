@@ -12,16 +12,16 @@
                     @bind-Value="@this.key" 
                     Label="Key" 
                     Adornment="Adornment.Start" 
-                    AdornmentIcon="@this.KeyAdornmentIcon"
                     AdornmentColor="Color.Secondary"
+                    AdornmentText="@this.KeyAdornmentText"
                     IconSize="Size.Small"
                     Immediate="true"/>
                 <MudTextField 
                     @bind-Value="@this.value" 
                     Label="Value" 
-                    Adornment="Adornment.Start" 
-                    AdornmentIcon="@this.ValueAdornmentIcon" 
-                    AdornmentColor="Color.Secondary" 
+                    Adornment="Adornment.Start"  
+                    AdornmentColor="Color.Secondary"
+                    AdornmentText="@this.ValueAdornmentText"
                     IconSize="Size.Small"
                     Immediate="true" />
             }
@@ -31,8 +31,8 @@
                     @bind-Value="@this.value"
                     Label="Value"
                     Adornment="Adornment.Start"
-                    AdornmentIcon="@this.ValueAdornmentIcon"
                     AdornmentColor="Color.Secondary"
+                    AdornmentText="@this.ValueAdornmentText"
                     IconSize="Size.Small"
                     Immediate="true" />
             }
@@ -44,8 +44,8 @@
                     @bind-Value="@this.key"
                     Label="Key"
                     Adornment="Adornment.Start"
-                    AdornmentIcon="@this.KeyAdornmentIcon"
                     AdornmentColor="Color.Secondary"
+                    AdornmentText="@this.KeyAdornmentText"
                     IconSize="Size.Small"
                     Immediate="true" />
             }

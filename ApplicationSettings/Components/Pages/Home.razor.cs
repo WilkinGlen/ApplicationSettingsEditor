@@ -16,7 +16,7 @@ public sealed partial class Home
     //private ApplicationSetting ApplicationSetting = new() { SettingId = Guid.NewGuid(), ParentGuid = Guid.NewGuid(), Children = [new ApplicationSetting()] };
     private ApplicationSetting ApplicationSetting = new() { SettingId = Guid.NewGuid(), ParentGuid = Guid.NewGuid() };
     //private ApplicationSetting ApplicationSetting = new();
-    private readonly SettingTypes settingType = SettingTypes.ArrayItem;
+    private readonly SettingTypes settingType = SettingTypes.Individual;
 
     protected override void OnInitialized() => this.Snackbar!.Configuration.PositionClass = Defaults.Classes.Position.BottomRight;
 
