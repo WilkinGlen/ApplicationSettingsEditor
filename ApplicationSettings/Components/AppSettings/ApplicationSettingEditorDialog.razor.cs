@@ -7,8 +7,8 @@ using MudBlazor;
 public sealed partial class ApplicationSettingEditorDialog
 {
     private readonly List<SettingTypes> SettingTypesThatMustHaveParentGuid = [
-        SettingTypes.ConnectionString, 
-        SettingTypes.ArrayItem, 
+        SettingTypes.ConnectionString,
+        SettingTypes.ArrayItem,
         SettingTypes.GroupItem];
     private string? key;
     private string? value;
@@ -31,7 +31,7 @@ public sealed partial class ApplicationSettingEditorDialog
 
     protected override async void OnInitialized()
     {
-        this.ApplicationSetting ??= new ();
+        this.ApplicationSetting ??= new();
         this.key = $"{this.ApplicationSetting?.Key}";
         this.value = $"{this.ApplicationSetting?.Value}";
         await this.ValidateArguments();
