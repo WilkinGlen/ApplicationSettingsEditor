@@ -17,6 +17,11 @@ public sealed partial class ApplicationSettingEditorDialog
         SettingTypes.ArrayItem];
     private string? key;
     private string? value;
+    private bool keyIsValid = true;
+    private bool valueIsValid = true;
+
+    private string KeyAdornmentIcon => this.keyIsValid ? string.Empty : Icons.Material.Filled.StarOutline;
+    private string ValueAdornmentIcon => this.valueIsValid ? string.Empty : Icons.Material.Filled.StarOutline;
 
     [CascadingParameter]
     private MudDialogInstance? MudDialog { get; set; }
@@ -77,7 +82,33 @@ public sealed partial class ApplicationSettingEditorDialog
             ParentGuid = this.ApplicationSetting!.ParentGuid
         };
 
-        this.MudDialog!.Close(DialogResult.Ok(appSetting));
+        if (this.AppSettingIsValid(appSetting))
+        {
+            this.MudDialog!.Close(DialogResult.Ok(appSetting));
+        }
+    }
+
+    private bool AppSettingIsValid(ApplicationSetting applicationSetting)
+    {
+        this.keyIsValid = true;
+        this.valueIsValid = true;
+
+        if (this.SettingType is SettingTypes.Individual or SettingTypes.ConnectionString or SettingTypes.GroupItem)
+        {
+            (this.keyIsValid, this.valueIsValid) = (!string.IsNullOrEmpty(this.key), !string.IsNullOrEmpty(this.value));
+        }
+
+        if (this.SettingType is SettingTypes.ArrayItem)
+        {
+            this.valueIsValid = !string.IsNullOrEmpty(this.value);
+        }
+
+        if (this.SettingType is SettingTypes.ConnectionStringsGroup or SettingTypes.Group or SettingTypes.Array)
+        {
+            this.keyIsValid = !string.IsNullOrEmpty(this.key);
+        }
+
+        return this.keyIsValid && this.valueIsValid;
     }
 
     private void Cancel() => this.MudDialog!.Cancel();

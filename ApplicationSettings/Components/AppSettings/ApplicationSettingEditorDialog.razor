@@ -8,18 +8,46 @@
                  this.SettingType == SettingTypes.ConnectionString || 
                  this.SettingType == SettingTypes.GroupItem)
             {
-                <MudTextField @bind-Value="@this.key" Label="Key" />
-                <MudTextField @bind-Value="@this.value" Label="Value" />
+                <MudTextField 
+                    @bind-Value="@this.key" 
+                    Label="Key" 
+                    Adornment="Adornment.Start" 
+                    AdornmentIcon="@this.KeyAdornmentIcon"
+                    AdornmentColor="Color.Secondary"
+                    IconSize="Size.Small"
+                    Immediate="true"/>
+                <MudTextField 
+                    @bind-Value="@this.value" 
+                    Label="Value" 
+                    Adornment="Adornment.Start" 
+                    AdornmentIcon="@this.ValueAdornmentIcon" 
+                    AdornmentColor="Color.Secondary" 
+                    IconSize="Size.Small"
+                    Immediate="true" />
             }
             @if(this.SettingType == SettingTypes.ArrayItem)
             {
-                <MudTextField @bind-Value="@this.value" Label="Value" />
+                <MudTextField 
+                    @bind-Value="@this.value"
+                    Label="Value"
+                    Adornment="Adornment.Start"
+                    AdornmentIcon="@this.ValueAdornmentIcon"
+                    AdornmentColor="Color.Secondary"
+                    IconSize="Size.Small"
+                    Immediate="true" />
             }
             @if (this.SettingType == SettingTypes.ConnectionStringsGroup || 
                 this.SettingType == SettingTypes.Group || 
                 this.SettingType == SettingTypes.Array)
             {
-                <MudTextField @bind-Value="@this.key" Label="Key" />
+                <MudTextField 
+                    @bind-Value="@this.key"
+                    Label="Key"
+                    Adornment="Adornment.Start"
+                    AdornmentIcon="@this.KeyAdornmentIcon"
+                    AdornmentColor="Color.Secondary"
+                    IconSize="Size.Small"
+                    Immediate="true" />
             }
         </MudStack>
     </DialogContent>
