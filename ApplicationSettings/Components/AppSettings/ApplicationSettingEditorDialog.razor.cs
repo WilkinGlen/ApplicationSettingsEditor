@@ -61,6 +61,14 @@ public sealed partial class ApplicationSettingEditorDialog
 
     private async Task ValidateArguments()
     {
+        if(this.SettingType == SettingTypes.NotSet)
+        {
+            await this.OnExceptionThrown.InvokeAsync(
+                    new ArgumentException($"SettingType must be set"));
+            this.MudDialog!.Cancel();
+            return;
+        }
+
         if (this.SettingTypesThatMustHaveParentGuid.Contains(this.SettingType))
         {
             if (this.ApplicationSetting!.ParentGuid == null || this.ApplicationSetting!.ParentGuid == Guid.Empty)

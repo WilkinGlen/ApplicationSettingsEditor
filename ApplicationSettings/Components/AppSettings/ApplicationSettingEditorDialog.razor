@@ -39,8 +39,8 @@
                     Immediate="true" />
             }
             @if (this.SettingType == SettingTypes.ConnectionStringsGroup || 
-                this.SettingType == SettingTypes.Group || 
-                this.SettingType == SettingTypes.Array)
+                 this.SettingType == SettingTypes.Group || 
+                 this.SettingType == SettingTypes.Array)
             {
                 <MudTextField 
                     @ref="@this.initialFocusItem"
@@ -56,6 +56,6 @@
     </DialogContent>
     <DialogActions>
         <MudButton Variant="Variant.Outlined" Size="Size.Small" OnClick="@this.Cancel">Cancel</MudButton>
-        <MudButton Variant="Variant.Outlined" Size="Size.Small" Color="Color.Primary" OnClick="@this.Save">Save</MudButton>
+        <MudButton Variant="Variant.Outlined" Size="Size.Small" Color="Color.Primary" Class="mr-4" OnClick="@this.Save">Save</MudButton>
     </DialogActions>
 </MudDialog>

@@ -4,24 +4,27 @@ using System.ComponentModel;
 
 public enum SettingTypes
 {
+    [Description("Not Set")]
+    NotSet = 0,
+
     [Description("Individual")]
-    Individual = 0,
+    Individual = 1,
 
     [Description("ConnectionStrings Group")]
-    ConnectionStringsGroup = 1,
+    ConnectionStringsGroup = 2,
 
     [Description("ConnectionString")]
-    ConnectionString = 2,
+    ConnectionString = 3,
 
     [Description("Array")]
-    Array = 3,
+    Array = 4,
 
     [Description("Array Item")]
-    ArrayItem = 4,
+    ArrayItem = 5,
 
     [Description("Group")]
-    Group = 5,
+    Group = 6,
 
     [Description("Group Item")]
-    GroupItem = 6
+    GroupItem = 7
 }
