@@ -6,7 +6,7 @@
         <MudStack Row>
             @if (this.SettingType == SettingTypes.Individual || 
                  this.SettingType == SettingTypes.ConnectionString || 
-                 this.SettingType == SettingTypes.GroupItem)
+                (this.SettingType == SettingTypes.GroupItem && this.ApplicationSetting?.Children == null))
             {
                 <MudTextField 
                     @ref="@this.initialFocusItem"
@@ -40,7 +40,8 @@
             }
             @if (this.SettingType == SettingTypes.ConnectionStringsGroup || 
                  this.SettingType == SettingTypes.Group || 
-                 this.SettingType == SettingTypes.Array)
+                 this.SettingType == SettingTypes.Array ||
+                (this.SettingType == SettingTypes.GroupItem && this.ApplicationSetting?.Children != null))
             {
                 <MudTextField 
                     @ref="@this.initialFocusItem"

@@ -10,10 +10,9 @@ public sealed partial class ApplicationSettingEditorDialog
         SettingTypes.ConnectionString,
         SettingTypes.ArrayItem,
         SettingTypes.GroupItem];
-    private readonly List<SettingTypes> SettingThatCannotHaveChildren = [
+    private readonly List<SettingTypes> SettingTypesThatCannotHaveChildren = [
         SettingTypes.Individual,
         SettingTypes.ConnectionString,
-        SettingTypes.GroupItem,
         SettingTypes.ArrayItem];
     private string? key;
     private string? value;
@@ -80,7 +79,7 @@ public sealed partial class ApplicationSettingEditorDialog
             }
         }
 
-        if (this.SettingThatCannotHaveChildren.Contains(this.SettingType))
+        if (this.SettingTypesThatCannotHaveChildren.Contains(this.SettingType))
         {
             if (this.ApplicationSetting?.Children?.Any() == true)
             {
