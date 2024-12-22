@@ -1,6 +1,6 @@
 ﻿@using ApplicationSettings.Models
 
-<MudDialog Style="@this.DialogCssStyle">
+<MudDialog Style="@this.DialogCssStyle" DefaultFocus="DefaultFocus.None">
     <TitleContent>@this.SettingType.GetDescription() Setting</TitleContent>
     <DialogContent>
         <MudStack Row>
@@ -9,6 +9,7 @@
                  this.SettingType == SettingTypes.GroupItem)
             {
                 <MudTextField 
+                    @ref="@this.initialFocusItem"
                     @bind-Value="@this.key" 
                     Label="Key" 
                     Adornment="Adornment.Start" 
@@ -28,6 +29,7 @@
             @if(this.SettingType == SettingTypes.ArrayItem)
             {
                 <MudTextField 
+                    @ref="@this.initialFocusItem"
                     @bind-Value="@this.value"
                     Label="Value"
                     Adornment="Adornment.Start"
@@ -41,6 +43,7 @@
                 this.SettingType == SettingTypes.Array)
             {
                 <MudTextField 
+                    @ref="@this.initialFocusItem"
                     @bind-Value="@this.key"
                     Label="Key"
                     Adornment="Adornment.Start"

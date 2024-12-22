@@ -19,6 +19,7 @@ public sealed partial class ApplicationSettingEditorDialog
     private string? value;
     private bool keyIsValid = true;
     private bool valueIsValid = true;
+    private MudTextField<string?>? initialFocusItem;
 
     private string KeyAdornmentText => this.keyIsValid ? " " : "Key required";
     private string ValueAdornmentText => this.valueIsValid ? " " : "Value required";
@@ -45,6 +46,17 @@ public sealed partial class ApplicationSettingEditorDialog
         this.key = $"{this.ApplicationSetting?.Key}";
         this.value = $"{this.ApplicationSetting?.Value}";
         await this.ValidateArguments();
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if(firstRender)
+        {
+            if(this.initialFocusItem != null)
+            {
+                await this.initialFocusItem.FocusAsync();
+            }
+        }
     }
 
     private async Task ValidateArguments()
